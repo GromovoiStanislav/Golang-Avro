@@ -50,17 +50,14 @@ func readAndDecodeFromFile(codec *goavro.Codec, filename string) (map[string]int
 
 func main() {
 	// Чтение содержимого файла
-	fileContent, err := ioutil.ReadFile("user_schema.avsc")
+	schema, err := ioutil.ReadFile("user_schema.avsc")
 	if err != nil {
 		fmt.Println("Error reading file:", err)
 		return
 	}
 
-	// Преобразование содержимого файла в строку
-	schemaJSON := string(fileContent)
-
 	// Создание Avro схемы
-	codec, err := goavro.NewCodec(schemaJSON)
+	codec, err := goavro.NewCodec(string(schema))
 	if err != nil {
 		fmt.Println("Error creating Avro codec:", err)
 		return
