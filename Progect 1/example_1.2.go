@@ -31,16 +31,17 @@ func main() {
 		"emails": []string{"john.doe@example.com", "johndoe@gmail.com"},
 	}
 
-	// Кодирование данных в Avro бинарный формат
+	// Кодирование данных в Avro текстовый формат
 	avroData, err := codec.TextualFromNative(nil, user)
 	if err != nil {
 		fmt.Println("Error encoding Avro data:", err)
 		return
 	}
 
+	fmt.Println("JSON:", string(avroData))
 	fmt.Println("Encoded:", avroData)
 
-	// Декодирование бинарных данных обратно в объект
+	// Декодирование текстовых данных обратно в объект
 	native, _, err := codec.NativeFromTextual(avroData)
 	if err != nil {
 		fmt.Println("Error decoding Avro data:", err)
