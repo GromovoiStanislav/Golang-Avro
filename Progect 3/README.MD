@@ -12,4 +12,5 @@ go get github.com/linkedin/goavro/v2
 ```
 go run example_1.go
 go run example_2.go
+go run example_3.go
 ```
